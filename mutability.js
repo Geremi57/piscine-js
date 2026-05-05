@@ -1,10 +1,3 @@
-const person = {
-    name: "Rick",
-    age: 77,
-    country: "US",
-};
-
-
 const clone1 = {...person}
 const clone2 = {...person}
 const samePerson = person
@@ -29,3 +22,5 @@ console.log(clone2.country === "US"); // Should be true
 
 console.log(samePerson.age === 78); // Should be true
 console.log(samePerson.country === "FR"); // Should be true
+
+
