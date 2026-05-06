@@ -1,6 +1,6 @@
-// const set = new Set();
 
 const arrToSet = function(arr){
+    let set = new Set();
     arr.forEach(el => {
         set.add(el)
     });
