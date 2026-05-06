@@ -80,14 +80,17 @@ const superTypeOf = function(val){
         return 'undefined'
     }else if (val === null){
         return 'Null'
-    }else if (val instanceof Object){
-        return 'Object'
-    }else if (val instanceof String){
-        return 'String'
-    }else if (val instanceof Number){
-        return 'Number'
     }
-    return typeof val
+    const type = typeof val
+
+    if (type === 'string') return 'String'
+    if (type === 'number') return 'Number'
+    if (type === 'boolean') return 'Boolean'
+    if (type === 'function') return 'Function'
+    if (type === 'object') return 'Object'
+
+    return type
+
 }
 
 
