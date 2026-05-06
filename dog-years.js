@@ -27,5 +27,6 @@ function dogYears(arg1, arg2){
     // let normSeconds = object[arg1]  
     // console.log(normYears)
     fin *= dogYearToHuman
-    return fin.toFixed(2)
+    fin = fin.toFixed(2)
+    return fin * 1
 }
