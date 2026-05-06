@@ -41,7 +41,7 @@
         return false
     }
     is.obj = function(obj){
-        if (typeof obj == "object" && !Array.isArray(obj) || obj == null) {
+        if (typeof obj == "object" && !Array.isArray(obj) && obj !== null) {
             return true
         }
         return false
