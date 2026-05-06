@@ -1,5 +1,4 @@
-const is = {
-    num: function(num) {
+ is. num = function(num) {
         if (isNaN(num)){
             return false
 
@@ -8,66 +7,66 @@ const is = {
             return true
         }
         return false
-    },
-    nan: function(num) {
+    }
+    is. nan = function(num) {
         if (isNaN(num) && typeof num !== "string"){
             return true
         }
         return false
-    },
-    str: function(str){
+    }
+    is.str = function(str){
         if (typeof str == "string"){
             return true
         }
         return false
-    },
-    bool: function(bool){
+    }
+    is.bool = function(bool){
         if (typeof bool == "boolean"){
             return true
         }
         return false
-    },
-    undef: function(undef){
+    }
+    is.undef = function(undef){
         if (typeof undef == "undefined"){
             return true
         }
         return false
-    },
-    def: function(def){
+    }
+    is.def = function(def){
         if (typeof def !== "undefined") {
             return true
         }
         return false
-    },
-    arr: function(arr){
+    }
+    is.arr = function(arr){
         if (Array.isArray(arr)){
             return true
         }
         return false
-    },
-    obj: function(obj){
+    }
+    is.obj = function(obj){
         if (typeof obj == "object" && !Array.isArray(obj) || obj == null) {
             return true
         }
         return false
     },
-    fun: function(fun){
+    is.fun = function(fun){
         if (typeof fun == "function"){
             return true
         }
         return false
-    },
-    truthy: function(truthy){
+    }
+    is.truthy = function(truthy){
         if (truthy){
             return true
         }
         return false
     },
-    falsy: function(falsy) {
+    is.falsy = function(falsy) {
         if (!falsy){
             return true
         }
         return false
     }
 
-}
+    console.log(is)
