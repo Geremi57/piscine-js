@@ -79,7 +79,7 @@ const superTypeOf = function(val){
     }else if (typeof val === undefined){
         return 'undefined'
     }else if (val === null){
-        return 'Null'
+        return 'null'
     }
     const type = typeof val
 
