@@ -1,2 +1,2 @@
-const biggie = Number.MAX_VALUE
-const smalls = -biggie
+const biggie = Infinity
+const smalls = -Infinity
