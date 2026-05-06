@@ -1,9 +1,5 @@
  is. num = function(num) {
-        if (isNaN(num)){
-            return false
-
-        }
-        if (typeof num == 'number' && num != NaN){
+        if (typeof num == 'number'){
             return true
         }
         return false
@@ -68,5 +64,3 @@
         }
         return false
     }
-
-    console.log(is)
