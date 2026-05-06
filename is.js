@@ -4,8 +4,8 @@
         }
         return false
     }
-    is. nan = function(num) {
-        if (isNaN(num) && typeof num !== "string"){
+    is.nan = function(num) {
+        if (Number.isNaN(num)){
             return true
         }
         return false
@@ -63,4 +63,4 @@
             return true
         }
         return false
-    }
+}
