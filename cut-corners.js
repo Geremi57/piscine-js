@@ -10,6 +10,7 @@ const round = function (n){
         wasNeg = true
         n *= -1
     }
+
     let whole = trunc(n)
     let dec = n - whole
     let val = 0
@@ -116,26 +117,18 @@ const floor = function (n) {
 
     return fin
 }
-
 const trunc = function (n) {
-    if (n === Infinity || n === -Infinity) {
-        return n
+    let i = 0;
+    let step = n < 0 ? -1 : 1;
+
+    while ((i + step) <= n && n >= 0) {
+        i += step;
     }
 
-    let count = 0
-    let number = n
-
-    if (number < 0) {
-        while (number <= -1) {
-            number += 1
-            count -= 1
-        }
-    } else {
-        while (number >= 1) {
-            number -= 1
-            count += 1
-        }
+    while ((i + step) >= n && n < 0) {
+        i += step;
     }
 
-    return count
+    return i;
 }
+
