@@ -6,7 +6,7 @@ const round = function (n){
         wasNeg = true
         n *= -1
     }
-    let whole = n | 0
+    let whole = trunc(n)
     let dec = n - whole
     let val = 0
     let fin = n
@@ -31,7 +31,7 @@ const ceil = function (n) {
         wasNeg = true
         // n *= -1
     }
-    let whole = n | 0
+    let whole = trunc(n)
     // console.log(whole);
     
     let dec = n - whole
@@ -73,7 +73,7 @@ const floor = function (n) {
         wasNeg = true
         // n *= -1
     }
-    let whole = n | 0
+    let whole = trunc(n)
     // console.log(whole);
     let dec = n - whole
     // console.log(dec); 
@@ -108,5 +108,8 @@ const floor = function (n) {
 }
 
 const trunc = function (n) {
-    return n | 0
+    if (n < 0) {
+        return -Number(String(-n).split('.')[0])
+    }
+    return Number(String(n).split('.')[0])
 }
