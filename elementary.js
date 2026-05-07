@@ -71,7 +71,7 @@ const modulo = function(a, b){
     if (bWasNeg && aWasNeg) {
         fin = fin
     }else if (bWasNeg || aWasNeg){
-        fin *= -1
+        fin = -fin
     }
 
     return fin
