@@ -1,5 +1,9 @@
 
 const round = function (n){
+
+    if (n === Infinity || n === -Infinity) {
+        return n
+    }
     // Math.round(n)
     let wasNeg = false
     if (n < 0) {
@@ -26,6 +30,9 @@ const round = function (n){
 }
 
 const ceil = function (n) {
+    if (n === Infinity || n === -Infinity) {
+        return n
+    }
     let wasNeg = false
     if (n < 0) {
         wasNeg = true
@@ -68,6 +75,9 @@ const ceil = function (n) {
 }
 
 const floor = function (n) {
+    if (n === Infinity || n === -Infinity) {
+        return n
+    }
     let wasNeg = false
     if (n < 0) {
         wasNeg = true
@@ -108,18 +118,21 @@ const floor = function (n) {
 }
 
 const trunc = function (n) {
+    if (n === Infinity || n === -Infinity) {
+        return n
+    }
 
     let count = 0
-    let num = n
+    let number = n
 
-    if (num < 0) {
-        while (num <= -1) {
-            num += 1
+    if (number < 0) {
+        while (number <= -1) {
+            number += 1
             count -= 1
         }
     } else {
-        while (num >= 1) {
-            num -= 1
+        while (number >= 1) {
+            number -= 1
             count += 1
         }
     }
