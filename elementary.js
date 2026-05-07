@@ -3,20 +3,20 @@ const multiply = function(a, b){
     let aWasNeg = false
     if (b < 0){
         bWasNeg = true
-        b *= -1
+        b = -b
     }
     if (a < 0) {
         aWasNeg = true
-        a *= -1
+        a = -a
     }
     let fin = 0
     for(let i = 0; i < b; i++){
         fin += a
     }
     if (bWasNeg && aWasNeg) {
-        fin *= -1 * -1
+        fin = fin
     }else if (bWasNeg || aWasNeg){
-        fin *= -1
+        fin = -fin
     }
     return fin
 }
@@ -26,11 +26,11 @@ const divide = function(a, b) {
     let aWasNeg = false
     if (b < 0){
         bWasNeg = true
-        b *= -1
+        b = -b
     }
     if (a < 0) {
         aWasNeg = true
-        a *= -1
+        a = -a
     }
     let fin =  a 
     
@@ -43,9 +43,9 @@ const divide = function(a, b) {
     }
     console.log(fin)
     if (bWasNeg && aWasNeg) {
-        fin *= -1 * -1
+        fin = fin
     }else if (bWasNeg || aWasNeg){
-        fin *= -1
+        fin = -fin
     }
     return fin
 }
@@ -55,11 +55,11 @@ const modulo = function(a, b){
     let aWasNeg = false
     if (b < 0){
         bWasNeg = true
-        b *= -1
+        b = -b
     }
     if (a < 0) {
         aWasNeg = true
-        a *= -1
+        a = -a
     }
     let fin = a
     for (let i = 1; i < b; i++){ 
@@ -69,7 +69,7 @@ const modulo = function(a, b){
         }
     }
     if (bWasNeg && aWasNeg) {
-        fin *= -1 * -1
+        fin = fin
     }else if (bWasNeg || aWasNeg){
         fin *= -1
     }
