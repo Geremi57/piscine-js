@@ -118,9 +118,58 @@ const floor = function (n) {
     return fin
 }
 
+
+// const modulo = function(a, b){
+//      let bWasNeg = false
+//     let aWasNeg = false
+//     if (b < 0){
+//         bWasNeg = true
+//         b = -b
+//     }
+//     if (a < 0) {
+//         aWasNeg = true
+//         a = -a
+//     }
+//     let fin = a
+//     for (let i = 1; i < b; i++){ 
+//         if (b > fin) {
+//             return fin
+//         }
+//         fin -= b
+//         if (b > fin) {
+//             break
+//         }
+//     }
+//     if (bWasNeg && aWasNeg) {
+//         fin = -fin
+//     }else if (aWasNeg){
+//         fin = -finlet i = 0;
+//     let step = n < 0 ? -1 : 1;
+
+//     while ((i + step) <= n && n >= 0) {
+//         i += step;
+//     }
+
+//     while ((i + step) >= n && n < 0) {
+//         i += step;
+//     }
+
+//     return i;
+//     }else if (bWasNeg){
+//         fin = fin
+//     }
+
+//     return fin
+// }
+
 const trunc = function (n) {
-    const arr = new Int32Array(1)
-    arr[0] = n
-    return arr[0]
-    // return i;
+    // let whole = modulo(n, 1)
+    return n & -1 
 }
+
+const nums = [3.7, -3.7, 3.1, -3.1];
+console.log(nums.map(round));
+console.log(nums.map(floor));
+console.log(nums.map(trunc));
+console.log(nums.map(ceil));
+
