@@ -31,9 +31,9 @@ const includes = function(arr, char) {
     let bool = false
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] == char){
-            fin = true
+            bool = true
             break
         }
     }
-    return fin
+    return bool
 }
