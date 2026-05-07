@@ -1,4 +1,3 @@
-Math.round = Math.ceil = Math.floor = Math.trunc = undefined;
 
 const round = function (n){
     // Math.round(n)
