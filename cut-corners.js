@@ -108,8 +108,21 @@ const floor = function (n) {
 }
 
 const trunc = function (n) {
-    if (n < 0) {
-        return -Number(String(-n).split('.')[0])
+
+    let count = 0
+    let num = n
+
+    if (num < 0) {
+        while (num <= -1) {
+            num += 1
+            count -= 1
+        }
+    } else {
+        while (num >= 1) {
+            num -= 1
+            count += 1
+        }
     }
-    return Number(String(n).split('.')[0])
+
+    return count
 }
