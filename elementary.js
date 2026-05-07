@@ -9,6 +9,9 @@ const multiply = function(a, b){
         aWasNeg = true
         a = -a
     }
+    if (a == 0 || b == 0){
+        return 0
+    }
     let fin = 0
     for(let i = 0; i < b; i++){
         fin += a
@@ -34,14 +37,20 @@ const divide = function(a, b) {
     }
     let fin =  a 
     
-    for (let i = 1; i < b; i++){ 
-        fin -= b
+    for (let i = 0; i < b; i++){ 
         if (b > fin) {
-            fin = i 
+            fin = 0
+            return fin
+            // break
+        }
+        fin -= b
+
+        if (b > fin) {
+            fin = i + 1
             break
         }
     }
-    console.log(fin)
+    // console.log(fin)
     if (bWasNeg && aWasNeg) {
         fin = fin
     }else if (bWasNeg || aWasNeg){
@@ -63,15 +72,20 @@ const modulo = function(a, b){
     }
     let fin = a
     for (let i = 1; i < b; i++){ 
+        if (b > fin) {
+            return fin
+        }
         fin -= b
         if (b > fin) {
             break
         }
     }
     if (bWasNeg && aWasNeg) {
-        fin = fin
-    }else if (bWasNeg || aWasNeg){
         fin = -fin
+    }else if (aWasNeg){
+        fin = -fin
+    }else if (bWasNeg){
+        fin = fin
     }
 
     return fin
