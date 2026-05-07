@@ -117,18 +117,16 @@ const floor = function (n) {
 
     return fin
 }
+
 const trunc = function (n) {
-    let i = 0;
-    let step = n < 0 ? -1 : 1;
-
-    while ((i + step) <= n && n >= 0) {
-        i += step;
-    }
-
-    while ((i + step) >= n && n < 0) {
-        i += step;
-    }
-
-    return i;
+    const arr = new Int32Array(1)
+    arr[0] = n
+    return arr[0]
+    // return i;
 }
 
+const nums = [3.7, -3.7, 3.1, -3.1];
+console.log(nums.map(round));
+console.log(nums.map(floor));
+console.log(nums.map(trunc));
+console.log(nums.map(ceil));
