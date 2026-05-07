@@ -1,6 +1,9 @@
-const indexOf = function(arr, char){
+const indexOf = function(arr, char, start){
     let fin = -1
-        for (let i = 0; i < arr.length; i++){
+    if (start == undefined) {
+        start = 0
+    }
+        for (let i = start; i < arr.length; i++){
             if (arr[i] == char){
                 fin = i
                 break
@@ -9,9 +12,12 @@ const indexOf = function(arr, char){
     return fin
 }
 
-const lastIndexOf = function(arr, char) {
+const lastIndexOf = function(arr, char, start) {
     let fin = -1
-    for (let i = arr.length; i >= 0; i--) {
+    if (start == undefined) {
+        start = arr.length
+    }
+    for (let i = start; i >= 0; i--) {
         if (arr[i] == char) {
             fin = i
             break
