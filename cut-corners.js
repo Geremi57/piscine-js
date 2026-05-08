@@ -1,3 +1,4 @@
+// Math.round = Math.ceil = Math.floor = Math.trunc = undefined;
 
 const round = function (n){
     if (n === Infinity || n === -Infinity) {
@@ -162,16 +163,21 @@ const floor = function (n) {
 //     return fin
 // }
 const trunc = function(n) {
-    //     let i = 0
-
-    // if (n > 0) {
-    //     while (i + 1 <= n) {
-    //         i++
-    //     }
-    // } else if (n < 0) {
-    //     while (i - 1 >= n) {
-    //         i--
-    //     }
-    // }
-    return parseInt(n)
+        let i = 0
+    if (n > 100000){
+            i += 100000
+            return i
+    }
+    if (n > 0) {
+        for(i; ;i++) {
+            if (i+1 >= n){
+                return i
+            }
+        }
+    } else if (n < 0) {
+        while (i - 1 >= n) {
+            i--
+        }
+    }
+    return i
 }
