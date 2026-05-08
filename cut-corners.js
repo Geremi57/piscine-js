@@ -162,17 +162,16 @@ const floor = function (n) {
 //     return fin
 // }
 const trunc = function(n) {
-        let i = 0
+    //     let i = 0
 
-    if (n > 0) {
-        while (i + 1 <= n) {
-            i++
-        }
-    } else if (n < 0) {
-        while (i - 1 >= n) {
-            i--
-        }
-    }
-
-    return i
+    // if (n > 0) {
+    //     while (i + 1 <= n) {
+    //         i++
+    //     }
+    // } else if (n < 0) {
+    //     while (i - 1 >= n) {
+    //         i--
+    //     }
+    // }
+    return parseInt(n)
 }
