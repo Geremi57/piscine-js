@@ -163,36 +163,15 @@ const floor = function (n) {
 //     return fin
 // }
 const trunc = function(n) {
-    //     let i = 0
-    // if (n > 100000){
-    //         i += 100000
-    //         return i
-    // }
-    // if (n > 0) {
-    //     for(i; ;i++) {
-    //         if (i+1 >= n){
-    //             return i
-    //         }
-    //     }
-    // } else if (n < 0) {
-    //     while (i - 1 >= n) {
-    //         i--
-    //     }
-    // }
+    let i = 0;
 
-    let i = 0
-    if (n >= 0){
-        while (n > i+100000){
-            i = i + 10000
-        }
-        for (i; ;i++){
-            if (i + 1 > n) return i
-        }
+    if (n >= 0) {
+        while (i + 1000 <= n) i += 1000;
+        while (i + 1 <= n) i++;
+    } else {
+        while (i - 1000 >= n) i -= 1000;
+        while (i - 1 >= n) i--;
     }
-    else{
-        for(let i = 0; ;i--) {
-            if (i <= n) return i
-        }
-    }
-    // return i
+
+    return i;
 }
