@@ -1,9 +1,9 @@
 
 const round = function (n){
-
     if (n === Infinity || n === -Infinity) {
         return n
     }
+
     // Math.round(n)
     let wasNeg = false
     if (n < 0) {
@@ -161,9 +161,20 @@ const floor = function (n) {
 
 //     return fin
 // }
+const trunc = function(n) {
+    if (n < 0) {
+        let i = 0
+        while (i > n) i--
+        return i + 1 > n ? i + 1 : i
+    }
 
-const trunc = function (n) {
-    // let whole = modulo(n, 1)
-    return n & -1 
+    let i = 0
+    while (i <= n) i++
+    return i - 1
 }
 
+const nums = [3.7, -3.7, 3.1, -3.1];
+console.log(nums.map(round));
+console.log(nums.map(floor));
+console.log(nums.map(trunc));
+console.log(nums.map(ceil));
