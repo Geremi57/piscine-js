@@ -162,13 +162,17 @@ const floor = function (n) {
 //     return fin
 // }
 const trunc = function(n) {
-    if (n < 0) {
         let i = 0
-        while (i > n) i--
-        return i + 1 > n ? i + 1 : i
+
+    if (n > 0) {
+        while (i + 1 <= n) {
+            i++
+        }
+    } else if (n < 0) {
+        while (i - 1 >= n) {
+            i--
+        }
     }
 
-    let i = 0
-    while (i <= n) i++
-    return i - 1
+    return i
 }
