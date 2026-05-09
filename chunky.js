@@ -11,4 +11,3 @@ const chunky = function(arr, n) {
     }
     return twoDarr
 }
-\
