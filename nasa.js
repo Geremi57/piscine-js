@@ -2,20 +2,31 @@ const nasa = function(n){
     let str = "" 
     for (let i =1; i <= n; i++){
         if (i % 3 == 0 && i % 5 == 0){
-            str += "NASA "
+            str += "NASA"
+            if (i < n){
+            str += " "
+        }
             continue
         }
         if (i % 3 == 0){
-            str += "NA "
+            str += "NA"
+            if (i < n){
+            str += " "
+        }
             continue
         }
         if (i % 5 == 0) {
-            str += "SA "
+            str += "SA"
+            if (i < n){
+            str += " "
+        }
             continue
         }
-        str += `${i} `
+        str += `${i}`
+        if (i < n){
+            str += " "
+        }
+        
     }
     return str
 }
-
-// console.log(nasa(60));
