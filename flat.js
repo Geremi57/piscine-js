@@ -1,4 +1,4 @@
-const flat = function(arr, depth = 100000) {
+const flat = function(arr, depth = 1) {
 
     let result = []
 
@@ -21,3 +21,13 @@ const flat = function(arr, depth = 100000) {
 
     return result
 }
+
+console.log(flat([1, [2, [3, [4]]]], Infinity));
+
+
+console.log((flat([1]), [1]))
+console.log((flat([1, [2]]), [1, 2]))
+console.log((flat([1, [2, [3]]]), [1, 2, [3]]))
+console.log((flat([1, [2, [3], [4, [5]]]], 2), [1, 2, 3, 4, [5]]))
+console.log((flat([1, [2, [3], [4, [5]]]], 3), [1, 2, 3, 4, 5]))
+console.log((flat([1, [2, [3], [4, [5]]]], Infinity), [1, 2, 3, 4, 5]))
