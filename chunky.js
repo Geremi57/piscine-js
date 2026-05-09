@@ -1,4 +1,4 @@
-const chunky = function(arr, n) {
+const chunk = function(arr, n) {
     let twoDarr = []
     for (let i = 0; i < arr.length; i+= n) {
         let start = 0
