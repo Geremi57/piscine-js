@@ -42,7 +42,7 @@ const notSoGreedy = function(dataSet) {
             let que = parts[1]
             let count = que.split('&').length
             // count += parts[1].split('&').length
-            if (count >=2 ){
+            if (count >=2 && count <= 3 ){
                 out.push(data[i])
             }
         }
@@ -62,6 +62,3 @@ const notSoGreedy = function(dataSet) {
 
 // console.log(greedyQuery(dataSet));
 // console.log(notSoGreedy(dataSet));
-
-
-
