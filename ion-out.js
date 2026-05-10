@@ -1,19 +1,17 @@
 const ionOut = function(str){
-    let withIon = str.replace(/ion\b/gi, "")
-    let arr = withIon.match(/\w+/g)
-    // for(let i = 0; i < withIon.length; i++){
-    //     arr.push(withIon[i])
-    // }
+    let out = str.match(/\w+/g) || []
+    let arr = []
 
+    
+    for(let i = 0; i < out.length; i++){
+
+        if (/tion$/.test(out[i])) {
+            arr.push(out[i].replace(/ion$/, ""))
+        }
+    }
 
     // arr.push(withIon[withIon.length-1].replace(/\w[ion]/gi, ""))
     
 
-    return arr || []
+    return arr
 }
-
-console.log(ionOut("attention caution nation motion"));
-// Output: ['attent', 'caut', 'nat', 'mot']
-
-console.log(ionOut("creation fiction emotion"));
-// Output: ['creat', 'fict', 'emot']
