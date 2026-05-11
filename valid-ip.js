@@ -1,16 +1,30 @@
 const findIP = function(str){
 
-    let possible = str.match(/\b\d+\.\d+\.\d+\.\d+(:\d+)?\b/g) || []
+    let possible = str.match(/(?<![\d.])\d+\.\d+\.\d+\.\d+(?::\d+)?(?![\d.])/g) || []
 
-    console.log(possible);
+    // console.log(possible);
     let result = []
 
     for (let i = 0; i < possible.length; i++) {
 
-        let parts = possible[i].split('.')
+let currentIP = possible[i]
 
-        console.log(parts);
-        let valid = true
+// if (possible[i].includes(':')) {
+// }
+// console.log(parts);
+let valid = true
+
+
+        let port;
+        if (possible[i].includes(':')) {
+            
+            currentIP = possible[i].split(':')[0]
+            let split = possible[i].split(':')
+
+            ip = split[0]
+            port = split[1]
+        }
+let parts = currentIP.split('.')
 
         for (let j = 0; j < parts.length; j++) {
 
@@ -26,13 +40,12 @@ const findIP = function(str){
                 valid = false
             }
         }
-        
-                    let ipPort = possible[i].split(":")
+
         
                 // let ip = ipPort[0]
                 
 
-        let port = ipPort[1]
+        // let port = ipPort[1]
         if (port !== undefined) {
             
             let p = Number(port)
@@ -49,3 +62,5 @@ const findIP = function(str){
 
     return result
 }
+
+
