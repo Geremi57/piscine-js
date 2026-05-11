@@ -21,7 +21,7 @@ let valid = true
             currentIP = possible[i].split(':')[0]
             let split = possible[i].split(':')
 
-            ip = split[0]
+            // ip = split[0]
             port = split[1]
         }
 let parts = currentIP.split('.')
@@ -62,5 +62,4 @@ let parts = currentIP.split('.')
 
     return result
 }
-
 
