@@ -1,27 +1,27 @@
-const getTimestamp = (date) => {
-  if (date instanceof Date) {
-    return date.getTime();
-  }
-
-  return new Date(date).getTime();
-};
-
 const isValid = function(date) {
-  return !isNaN(getTimestamp(date));
+  return date instanceof Date && !isNaN(date.getTime());
 };
 
 const isAfter = function(date1, date2) {
-  return getTimestamp(date1) > getTimestamp(date2);
+  return isValid(date1) &&
+         isValid(date2) &&
+         date1.getTime() > date2.getTime();
 };
 
 const isBefore = function(date1, date2) {
-  return getTimestamp(date1) < getTimestamp(date2);
+  return isValid(date1) &&
+         isValid(date2) &&
+         date1.getTime() < date2.getTime();
 };
 
 const isFuture = function(date) {
-  return isValid(date) && getTimestamp(date) > Date.now();
+  return isValid(date) &&
+         date.getTime() > Date.now();
 };
 
 const isPast = function(date) {
-  return isValid(date) && getTimestamp(date) < Date.now();
+  return isValid(date) &&
+         date.getTime() < Date.now();
 };
+
+console.log(isValid('2013-01-01'));
