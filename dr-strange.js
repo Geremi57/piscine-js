@@ -46,17 +46,23 @@ let day0 = new Date('0001-01-01')
 
 
 const timeTravel = function({ date, hour, minute, second }){
-    let year = date.getFullYear()
-    let month = date.getMonth()
-    let actDate = date.getDate()
-    // console.log(actDate);
+//     let year = date.getFullYear()
+//     let month = date.getMonth()
+//     let actDate = date.getDate()
+//     // console.log(actDate);
     
-    // let param = 
+//     // let param = 
 
-    let newDate = new Date(year, month, actDate, hour, minute, second)
+//     let newDate = new Date(year, month, actDate, hour, minute, second)
 
-    console.log(newDate.toString());
+//     console.log(newDate.toString());
     
-5
-    return newDate.toString()
+// 5
+//     return newDate.toString()
+
+    date.setHours(hour) 
+    date.setMinutes(minute)
+    date.setSeconds(second)
+    
+    return date
 }
