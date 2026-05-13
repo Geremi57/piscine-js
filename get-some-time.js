@@ -1,4 +1,5 @@
 const firstDayWeek = function(week, year){
+    if (week === 1)return `01-01-${year}`
     const mill = 1000*60*60*24
     const start = new Date(`${year}-01-01`)
     const off = start.getDay() === 0 ? 6 : start.getDay()-1
@@ -9,5 +10,3 @@ const firstDayWeek = function(week, year){
     
     return fin.toISOString().replace(/T.*/g, '').split('-').reverse().join('-')
 }
-
-
