@@ -3,11 +3,11 @@ const addWeek = function(date){
     let day =date.getDay() 
     let dateFrom = date.getDate()
     let during = ""
-    if (dateFrom > 7 && dateFrom < 14){
+    if (dateFrom > 7 && dateFrom <= 14){
         during = "second"
-    }else if (dateFrom > 14 && dateFrom < 21){
+    }else if (dateFrom > 15 && dateFrom <= 21){
         during = "third"
-    }else if (dateFrom > 21 && dateFrom < 28){
+    }else if (dateFrom > 21 ){
         during = "fourth"
     }
     console.log(dateFrom)
@@ -39,3 +39,4 @@ console.log(addWeek(new Date("0001-01-08")))
 console.log(addWeek(new Date("0001-01-16")))
 console.log(addWeek(new Date("0001-01-22")))
 console.log(addWeek(new Date("0001-01-09")))
+console.log(addWeek(new Date('0001-01-14')))
