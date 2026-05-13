@@ -1,5 +1,5 @@
 const addWeek = function(date){
-    let week = ["sunday","Monday", "Tuesday", "Wednesday", 'Thursday', "Friday", "Saturday"]
+    let week = ["Sunday","Monday", "Tuesday", "Wednesday", 'Thursday', "Friday", "Saturday"]
     let day =date.getDay() 
     let dateFrom = date.getDate()
     let during = ""
