@@ -9,7 +9,8 @@ const citiesOnly = function(arr){
 
 const upperCasingStates = function(arr){
     let upperCasedStates = arr.map((val) => {
-        return val.charAt(0).toUpperCase() + val.slice(1)
+      return val.replace(/\b\w/g, char => char.toUpperCase());
+        // return val.charAt(0).toUpperCase() + val.slice(1)
     })
     return upperCasedStates
 }
@@ -44,3 +45,14 @@ const tempForecasts = function(arr){
     })
     return tempForecasts
 }
+
+
+console.log(upperCasingStates([  'alabama',
+    'new jersey',
+    'alaska',
+    'new york',
+    'california',
+    'new hampshire',
+    'ohio',
+    'texas',
+    'west virginia']))
