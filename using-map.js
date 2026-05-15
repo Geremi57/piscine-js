@@ -28,10 +28,10 @@ const trimTemp = function(arr){
         val.temperature = val.temperature.trim()
         let fin = "" 
         for (let i=0; i < val.temperature.length; i++) {
-            if (val.temperature[i] === "°"){
+            if (val.temperature[i] === " "){
                 console.log("gotchaa")
-                fin += " "
-                // continue
+                // fin += ""
+                continue
             }
             fin += val.temperature[i]
             
@@ -54,4 +54,3 @@ const tempForecasts = function(arr){
     })
     return tempForecasts
 }
-
