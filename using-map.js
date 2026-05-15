@@ -7,7 +7,7 @@ const citiesOnly = function(arr){
 
 const upperCasingStates = function(arr){
     let upperCasedStates = arr.map((val) => {
-      return val.replace(/\b\w/g, char => char.toUpperCase());
+      return val.state.replace(/\b\w/g, char => char.toUpperCase());
         // return val.charAt(0).toUpperCase() + val.slice(1)
     })
     return upperCasedStates
@@ -45,8 +45,8 @@ const trimTemp = function(arr){
 const tempForecasts = function(arr){
     let tempForecasts = arr.map((val) => {
         console.log(val.temperature.trim())
-        val.state = val.state.charAt(0).toUpperCase() + val.state.slice(1)
-
+        // val.state = val.state.charAt(0).toUpperCase() + val.state.slice(1)
+        val.state = val.state.replace(/\b\w/g, char => char.toUpperCase());
         val.temperature = parseFloat(val.temperature.trim())
         val.temperature = `${Math.floor((val.temperature - 32) * 5 /9)}°Celsius in ${val.city}, ${val.state}`
         let fin = val.temperature
@@ -58,3 +58,21 @@ const tempForecasts = function(arr){
 
 console.log('38°Celsius in Los Angeles, California')
 console.log('38°Celcius in Los Angeles, California')
+
+console.log(tempForecasts([
+  {
+    city: "Boston",
+    temperature: " 101 °F",
+    state: "new mexico",
+    region: "West",
+  },
+]))
+
+console.log(upperCasingStates([
+  {
+    city: "Boston",
+    temperature: " 101 °F",
+    state: "new mexico",
+    region: "West",
+  },
+]))
