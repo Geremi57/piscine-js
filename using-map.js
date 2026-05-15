@@ -48,9 +48,13 @@ const tempForecasts = function(arr){
         val.state = val.state.charAt(0).toUpperCase() + val.state.slice(1)
 
         val.temperature = parseFloat(val.temperature.trim())
-        val.temperature = `${Math.floor((val.temperature - 32) * 5 /9)}°Celcius in ${val.city}, ${val.state}`
+        val.temperature = `${Math.floor((val.temperature - 32) * 5 /9)}°Celsius in ${val.city}, ${val.state}`
         let fin = val.temperature
         return fin
     })
     return tempForecasts
 }
+
+
+console.log('38°Celsius in Los Angeles, California')
+console.log('38°Celcius in Los Angeles, California')
