@@ -12,8 +12,8 @@ function currify(callback) {
     };
 }
 
-const mult2 = (el1, el2) => el1 * el2;
-console.log(mult2(2, 2)); // -> 4
+// const mult2 = (el1, el2) => el1 * el2;
+// console.log(mult2(2, 2)); // -> 4
 
-const mult2Curried = currify(mult2);
-console.log(mult2Curried(2)(2)); 
+// const mult2Curried = currify(mult2);
+// console.log(mult2Curried(2)(2)); 
