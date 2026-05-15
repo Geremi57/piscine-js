@@ -9,7 +9,7 @@ const adder= function(arr, start=0){
 
 const sumOrMul = function(arr, xtra){
     if (xtra == undefined){
-        xtra = 1
+        xtra = 0
     }
     const sumOrMul = arr.reduce((acc, val) => {
         // acc = xtra * val
@@ -45,6 +45,9 @@ console.log(adder([9, 24, 7, 11, 3], 10), 64)
 console.log(sumOrMul([18, 17, 7, 13, 25], 12))
 console.log(sumOrMul([1, 2, 3, 5, 8], 5))
 console.log(sumOrMul([8, 16, 7, 0, 32]))
+console.log(sumOrMul([29, 23, 3, 2, 25]))
+
+console.log(sumOrMul([8, 16, 7, 0, 31]), 31)
 //output is -> 278
 
 
