@@ -1,5 +1,5 @@
 const hasCity = function(country, cities) { 
-   return function(city) {
+   return function(ct) {
         const city =
 
             cities.includes(ct);
