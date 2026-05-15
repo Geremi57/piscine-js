@@ -5,8 +5,6 @@ const citiesOnly = function(arr){
   return citiesOnly
 }
 
-
-
 const upperCasingStates = function(arr){
     let upperCasedStates = arr.map((val) => {
       return val.replace(/\b\w/g, char => char.toUpperCase());
@@ -28,6 +26,17 @@ const fahrenheitToCelsius = function(arr) {
 const trimTemp = function(arr){
      let trimTemp = arr.map((val) => {
         val.temperature = val.temperature.trim()
+        let fin = "" 
+        for (let i=0; i < val.temperature.length; i++) {
+            if (val.temperature[i] === "°"){
+                console.log("gotchaa")
+                fin += " "
+                // continue
+            }
+            fin += val.temperature[i]
+            
+        }
+        val.temperature = fin
         return val
     })
     return trimTemp
@@ -46,5 +55,3 @@ const tempForecasts = function(arr){
     return tempForecasts
 }
 
-
-console.log(fahrenheitToCelsius(['86°F', '100°F', '41°F', '55°F', '10°F', '70°F', '-2°F']))
