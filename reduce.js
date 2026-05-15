@@ -12,7 +12,7 @@ const foldRight = function(arr, callback, acc){
      if (acc == undefined) {
         acc = 0
     }
-    for (let i = arr.length; i > 0; i--){
+    for (let i = arr.length-1; i >= 0; i--){
         acc = callback(acc, arr[i], arr)
     }
     return acc
@@ -31,7 +31,7 @@ function reduce(arr, callback) {
 
 const reduceRight = function(arr, callback){
      let acc = arr[arr.length-1]
-    for (let i = arr.length-1-1; i > 0; i--) {
+    for (let i = arr.length-2; i >= 0; i--) {
 
         const curr = arr[i];
 
