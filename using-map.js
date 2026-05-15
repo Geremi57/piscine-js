@@ -7,7 +7,7 @@ const citiesOnly = function(arr){
 
 const upperCasingStates = function(arr){
     let upperCasedStates = arr.map((val) => {
-      return val.state.replace(/\b\w/g, char => char.toUpperCase());
+      return val.replace(/\b\w/g, char => char.toUpperCase());
         // return val.charAt(0).toUpperCase() + val.slice(1)
     })
     return upperCasedStates
@@ -68,11 +68,4 @@ console.log(tempForecasts([
   },
 ]))
 
-console.log(upperCasingStates([
-  {
-    city: "Boston",
-    temperature: " 101 °F",
-    state: "new mexico",
-    region: "West",
-  },
-]))
+  console.log(upperCasingStates(["alabama", "new jersey"]))
