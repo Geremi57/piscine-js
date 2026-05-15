@@ -1,7 +1,7 @@
-const adder= function(arr){
+const adder= function(arr, start=0){
     const added = arr.reduce((acc, val) => {
        return acc + val
-    })
+    }, start)
     return added
 }
 
@@ -49,26 +49,3 @@ console.log(sumOrMul([8, 16, 7, 0, 32]))
 
 
 
-
-
-
-
-  const fArr1 = [
-    (x) => x + 2,
-    (x) => x ** 2,
-    (x) => x - 7,
-    (x) => `result: [${x}]`,
-  ]
-
-  const fArr2 = [
-    (x) => x + 20,
-    (x) => x * 3,
-    (x) => {
-      return {
-        result: x,
-        isOdd: x % 2 === 0,
-      }
-    },
-  ]
-
-  console.log(funcExec(fArr1, 10))
