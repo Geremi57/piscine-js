@@ -1,26 +1,28 @@
 import { colors } from './fifty-shades-of-cold.data.js'
 
 export const generateClasses = () => {
-    let cold = document.createElement('style')
+    let styleElement = document.createElement('style')
 
-    for (let color of colors) {
-        cold.innerHTML += `.${color} {background: ${color};}`
+    // let style = ''
+    for(let color of colors) {
+        styleElement.innerHTML += `.${color} {background: ${color}}`
     }
-    document.head.append(cold)
+    // styleElement.innerHTML = style
+
+    document.head.append(styleElement)
 }
 
+
 export const generateColdShades = () => {
-    const coldPattern = /(aqua|blue|turquoise|green|cyan|navy|purple)/
-    
-    for(const color of colors) {
-        if (coldPattern.test(color)) {
-            const shade = document.createElement('div')
-            shade.classList.add(color)
-            
-            shade.textContent = color
-            document.body.append(shade)
+    for (let color of colors) {
+        if ((/(aqua|blue|turquoise|green|cyan|navy|purple)/).test(color)) {
+            let coldColor = document.createElement('div')
+            coldColor.classList.add(color)
+            coldColor.textContent = color
+            document.body.append(coldColor)
         }
     }
+    
 }
 
 export const chose = (shade) => {
