@@ -7,7 +7,7 @@ export const generateClasses = () => {
     for(const color of colors) {
         style += `.${color} {background: ${color};}`
     }
-    styleElement.textContent = style
+    styleElement.innerHTML = style
 
     document.head.append(styleElement)
 }
