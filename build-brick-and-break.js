@@ -31,7 +31,7 @@ export const repair = function(...ids) {
             element.dataset.repaired = 'in progress';
 
         }else {
-            element.dataset.repaired ="repaired";
+            element.dataset.repaired ="true";
         }
     });
 };
