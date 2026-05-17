@@ -26,11 +26,14 @@ export const generateColdShades = () => {
     }
 }
 
-export const choseShade = (shade) => {
+export const chose = (shade) => {
     const allShades = document.querySelectorAll('div')
-    
-    for (const colorDiv of allShades) {
-        colorDiv.classList.add(shade)
+
+    for (const div of allShades) {
+        if (div.textContent === shade) {
+            div.className = shade
+        }
+        // colorDiv.classList.add(shade)
     }
 
 }
