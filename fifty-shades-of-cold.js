@@ -1,13 +1,13 @@
 import { colors } from './fifty-shades-of-cold.data.js'
 
 export const generateClasses = () => {
-    const styleElement = document.createElement('style')
+    let styleElement = document.createElement('style')
 
-    let style = ''
+    // let style = ''
     for(const color of colors) {
-        style += `.${color} { background: ${color}; }`
+        styleElement.innerHTML += `.${color} {background: ${color}}`
     }
-    styleElement.innerHTML = style
+    // styleElement.innerHTML = style
 
     document.head.append(styleElement)
 }
@@ -30,10 +30,11 @@ export const chose = (shade) => {
     const allShades = document.querySelectorAll('div')
 
     for (const div of allShades) {
-        if (div.textContent === shade) {
-            div.className = shade
-        }
-        // colorDiv.classList.add(shade)
+        // if (div.textContent === shade) {
+        //     div.className = shade
+        // }
+        div.className = ''
+        div.classList.add(shade)
     }
 
 }
