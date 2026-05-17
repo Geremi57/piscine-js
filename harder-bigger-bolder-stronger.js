@@ -6,10 +6,10 @@ export const getLetter = function () {
         Math.floor(Math.random() * totalLetters);
 
     const randomAsc =
-        alphabetStart + randomIndex;
+        alphabetStart + randomInd;
 
     const randomLet =
-        String.fromCharCode(randomAsciiCode);
+        String.fromCharCode(randomAsc);
 
     return randomLet;
 };
@@ -23,20 +23,20 @@ export const generateLetters = function () {
         const randomLet =getLetter();
         
         letter.textContent =randomLet;
-        const font =i + 11;
+        const font = i + 11;
         
-        letter.style.font = font + "px";
+        letter.style.fontSize = font + "px";
 
         if (i < 40) {
-            letter.style.weight ="300";
+            letter.style.fontWeight ="300";
         }
 
         else if (i < 80) {
-            letter.style.weight ="400";
+            letter.style.fontWeight ="400";
         }
 
         else {
-            letter.style.weight = "600";
+            letter.style.fontWeight = "600";
         }
         document.body.appendChild(letter);
     }
