@@ -12,20 +12,21 @@ export const generateClasses = () => {
     document.head.append(styleElement)
 }
 
-
 export const generateColdShades = () => {
-    for (let color of colors) {
-        if ((/(aqua|blue|turquoise|green|cyan|navy|purple)/).test(color)) {
-            let coldColor = document.createElement('div')
-            coldColor.classList.add(color)
-            coldColor.textContent = color
-            document.body.append(coldColor)
+    const coldPattern = /(aqua|blue|turquoise|green|cyan|navy|purple)/
+    
+    for(const color of colors) {
+        if (coldPattern.test(color)) {
+            const shade = document.createElement('div')
+            shade.classList.add(color)
+            
+            shade.textContent = color
+            document.body.append(shade)
         }
     }
-    
 }
 
-export const chose = (shade) => {
+export const choseShade = (shade) => {
     const allShades = document.querySelectorAll('div')
 
     for (const div of allShades) {
