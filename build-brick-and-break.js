@@ -4,7 +4,7 @@ export const build = function(num) {let curr = 1;
       
         brick.id = `brick-${curr}`;
       
-        if ((curr + 1) % 3 === 0) {
+        if ((curr) % 3 === 0) {
             brick.dataset.foundation = "true";
         }
 
@@ -24,15 +24,14 @@ export const repair = function(...ids) {
         if(!element){
             return;
         }
-        if(
-            element.hasAttribute(
-                "data-foundation"
-            ))
-             {element.dataset.repaired ="pending";
+
+        let brickNumber = Number(id.replace('brick-', ''))
+        if (brickNumber % 3 === 2){
+            element.dataset.repaired = 'in progress';
 
         }else {
             element.dataset.repaired =
-            "true";
+            "repaired";
         }
     });
 };
