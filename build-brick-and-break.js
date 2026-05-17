@@ -1,10 +1,11 @@
-export const build = function(num) {let curr = 1;
+export const build = function(num) {
+    let curr = 1;
     const createBrick = function() {
         const brick = document.createElement("div");
       
         brick.id = `brick-${curr}`;
       
-        if ((curr) % 3 === 0) {
+        if ((curr) % 3 === 2) {
             brick.dataset.foundation = "true";
         }
 
@@ -30,8 +31,7 @@ export const repair = function(...ids) {
             element.dataset.repaired = 'in progress';
 
         }else {
-            element.dataset.repaired =
-            "repaired";
+            element.dataset.repaired ="repaired";
         }
     });
 };
