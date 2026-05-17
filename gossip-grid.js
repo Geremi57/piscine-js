@@ -2,7 +2,7 @@ import { gossips } from "./gossip-grid.data.js";
 // let gossips = [...defaultGossips]
 
 export function grid() {
-createRanges()
+ranges()
 
 const form = document.createElement("form")
   form.className = "gossip"
@@ -55,7 +55,7 @@ card.innerHTML = item
 document.body.appendChild(card)
 }}
 
-function createRanges() {
+function ranges() {
         const wrapper = document.createElement("div")
             wrapper.className = "ranges"
 
