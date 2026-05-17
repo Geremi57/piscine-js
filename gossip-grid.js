@@ -51,7 +51,7 @@ for (const item of gossips) {
     const card = document.createElement("div")
     card.className = "gossip"
 // card.textContent = item
-card.innerHTML = item
+card.textContent = item
 document.body.appendChild(card)
 }}
 
@@ -116,6 +116,8 @@ c.style.backgroundColor = `hsl(280, 50%, ${e.target.value}%)`
     document.body.appendChild(wrapper)
         console.log("ranges created", wrapper)
     }
+
+    grid()
 
 // function clearGossips() {
 //     document.querySelectorAll(".gossip").forEach((el, i) => {
