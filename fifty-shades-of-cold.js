@@ -1,11 +1,13 @@
 import { colors } from './fifty-shades-of-cold.data.js'
 
 export const generateClasses = () => {
-    const styleElement =document.createElement('style')
+    const styleElement = document.createElement('style')
 
+    let style = ''
     for(const color of colors) {
-        styleElement.innerHTML += `.${color} {background: ${color};}`
+        style += `.${color} {background: ${color};}`
     }
+    styleElement.textContent = style
 
     document.head.append(styleElement)
 }
@@ -15,12 +17,10 @@ export const generateColdShades = () => {
     
     for(const color of colors) {
         if (coldPattern.test(color)) {
-            const shade =document.createElement('div')
-            
+            const shade = document.createElement('div')
             shade.classList.add(color)
             
             shade.textContent = color
-
             document.body.append(shade)
         }
     }
