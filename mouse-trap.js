@@ -1,80 +1,71 @@
-let isOutsideBox = true
-let containerBox = null
+let isOutside = true
+let boxElement
 
-export const initBox = () => {
-    containerBox = document.createElement("div")
-    containerBox.className = "box"
-    document.body.appendChild(containerBox)
+export const setBox = () => {
+
+    boxElement = document.createElement("div")
+ boxElement.className = "box"
+    document.body.appendChild(boxElement)
 }
 
-export const enableCircleCreation = () => {
-    document.addEventListener("click", (event) => {
-        spawnCircle(event)
-        isOutsideBox = true
-    })
+export const createCircle = () => {
+
+    document.addEventListener('click', handleClick)
 }
 
-export const enableCircleTracking = () => {
-    document.addEventListener("mousemove", (event) => {
-    document.querySelectorAll(".removeCircle").forEach(el => el.remove())
-        const preview = spawnCircle(event, "removeCircle")
+export const moveCircle = () => {
+  document.addEventListener('mousemove', handleMouseMove)
 
-     const bounds = containerBox.getBoundingClientRect()
-
-    const padding = 25
-
-   const inside =
-       event.clientX > bounds.left + padding && 
-         event.clientX < bounds.right - padding &&
-        event.clientY > bounds.top + padding &&
-        event.clientY < bounds.bottom - padding
-
-  if (inside) {
-        isOutsideBox = false
-  }
-
-   if (!isOutsideBox) {
-
-    let adjustedX = event.clientX - padding
-    
-     let adjustedY = event.clientY - padding
-           if (event.clientX < bounds.left + padding) {
-            adjustedX = bounds.left
-        }
-
-     if (event.clientX > bounds.right - padding) {
-         adjustedX = bounds.right - padding * 2
-       }
-           if (event.clientY < bounds.top + padding) {
-                 adjustedY = bounds.top
-       }
-
-        if (event.clientY > bounds.bottom - padding) {
-             adjustedY = bounds.bottom - padding * 2
-        }
-
-     preview.style.left = adjustedX + "px"
-     preview.style.top = adjustedY + "px"
-
-         const activeCircle = document.querySelector(".circle")
-        if (activeCircle) {
-               activeCircle.style.background = "var(--purple)"
-           }
-      }})
 }
 
-function spawnCircle(event, extraClass = "") {
-        const circle = document.createElement("div")
-          circle.className = "circle"
+function handleClick(event) {
 
-if (extraClass) {
-       circle.classList.add(extraClass)
-   }
+    createCircleElement(event)
+  isOutside = true
+}
 
-    circle.style.left = (event.clientX - 25) + "px"
-    circle.style.top = (event.clientY - 25) + "px"
-    circle.style.background = isOutsideBox ? "white" : "var(--purple)"
+function handleMouseMove(event) {
 
-    document.body.appendChild(circle)
-    return circle 
+    document.querySelectorAll('.removeCircle').forEach(el => el.remove())
+
+    const previewCircle = createCircleElement(event, 'removeCircle')
+
+    const boxRect = boxElement.getBoundingClientRect()
+const insideBox =
+        event.clientX >= boxRect.left + 25 &&
+       event.clientX <= boxRect.right - 25 &&
+        event.clientY >= boxRect.top + 25 &&
+        event.clientY <= boxRect.bottom - 25
+
+        if (insideBox) isOutside = false
+
+        if (!isOutside) clampCircleInsideBox(previewCircle, boxRect, event)
+}
+
+function createCircleElement(event, extraClass = '') {
+    const el = document.createElement('div')
+    el.className = 'circle'
+   if (extraClass) el.classList.add(extraClass)
+
+        el.style.background = !isOutside ? 'var(--purple)' : 'white'
+        el.style.left = (event.clientX - 25) + "px"
+
+        el.style.top = (event.clientY - 25) + "px"
+    document.body.appendChild(el)
+    return el
+}
+
+function clampCircleInsideBox(circle, boxRect, event) {
+
+    const r = 25
+  if (event.clientX - r < boxRect.left) circle.style.left = boxRect.left + "px"
+
+  if (event.clientX + r > boxRect.right) circle.style.left = (boxRect.right - 50) + "px"
+
+    if (event.clientY - r < boxRect.top) circle.style.top = boxRect.top + "px"
+  if (event.clientY + r > boxRect.bottom) circle.style.top = (boxRect.bottom - 50) + "px"
+
+  const main = document.querySelector(".circle")
+ if (main) main.style.background = 'var(--purple)'
+
 }
