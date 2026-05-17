@@ -1,4 +1,4 @@
-// import { styles } from './pimp-my-style.data.js'
+import { styles } from './pimp-my-style.data.js'
 let currentStyle = 0
 
 export const pimp = () => {
@@ -18,7 +18,6 @@ export const pimp = () => {
     else {
         button.classList.add(styles[currentStyle])
         currentStyle++
-
         if (currentStyle === styles.length) {
             button.classList.add('unpimp')
         }
