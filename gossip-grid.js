@@ -1,7 +1,7 @@
 import { gossips } from "./gossip-grid.data.js";
 // let gossips = [...defaultGossips]
 
-export function grid() {
+function grid() {
 ranges()
 
 const form = document.createElement("form")
@@ -41,7 +41,8 @@ form.appendChild(input)
 form.appendChild(btn)
 document.body.appendChild(form)
 
-renderGossips()}
+renderGossips()
+}
 
     function renderGossips() {
 // console.log("rendering", gossips.length, "gossips")
