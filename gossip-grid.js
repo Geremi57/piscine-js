@@ -118,7 +118,7 @@ c.style.backgroundColor = `hsl(280, 50%, ${e.target.value}%)`
         console.log("ranges created", wrapper)
     }
 
-    // grid()
+    grid()
 
     export { grid }
 
