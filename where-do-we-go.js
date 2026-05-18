@@ -1,118 +1,149 @@
 import { places } from "./where-do-we-go.data.js";
 // import { places } from "./where-do-we-go.data.js"
-// console.log("places", places)
+// import { places, defaultPlaces } from "./where-do-we-go.data.js"
 
-let lastScrollY = window.scrollY
-// let lastScrollY = 0
+var scroll = window.scrollY
+// var scroll = 0
 
-const currentPlace = document.createElement("a")
-    currentPlace.classList.add("location")
-    document.body.appendChild(currentPlace)
-// console.log("currentPlace", currentPlace)
+const location = document.createElement("a")
+location.classList.add("location")
+document.body.appendChild(location)
+// console.log("location el", location)
 
-function start() {
-// console.log("start")
-  
-places.sort(compareCoordinates)
-// places.sort((a, b) => compareCoordinates(a, b))
-// console.log("sorted places", places)
- buildPages()
-  const compass = document.createElement("div")
-  compass.classList.add("direction")
-    
-  document.body.appendChild(compass)
-        updateLocation()
+document.addEventListener("DOMContentLoaded", () => {
+    selectPlace()
+    // console.log("dom loaded")
+})
 
+document.addEventListener("scroll", () => {
+    selectPlace()
+    // console.log("scrollY", window.scrollY, "last", scroll)
+    scroll > window.scrollY
+        ? (document.querySelector(".direction").innerHTML = "N")
+        : (document.querySelector(".direction").innerHTML = "S")
+    // scroll > window.scrollY ? compass.innerHTML = "N" : compass.innerHTML = "S"
+    scroll = window.scrollY
+})
 
-        document.addEventListener("scroll", () => {
-// console.log("scrollY", window.scrollY)
-      updateLocation()
+function explore() {
+    places.sort(compareCoordinates)
+    // places.sort((a,b) => compareCoordinates(a, b))
+    console.log(places)
+    // console.log("sorted", places.map(p => p.name))
 
-      const goingUp = window.scrollY < lastScrollY
-// const goingUp = window.scrollY <= lastScrollY
+    places.forEach((place) => {
+        createSection(place)
+    })
 
-document.querySelector(".direction").textContent = goingUp ? "N" : "S"
-// console.log("direction", goingUp ? "N" : "S")
-    lastScrollY = window.scrollY
-})}
-
-function buildPages() {
-// console.log("building pages", places.length)
-    
-
-    for (const place of places) {
-
-        const page = document.createElement("section")
-
-        const name = place.name.toLowerCase().split(",")[0].replaceAll(" ", "-")
-// console.log("name", name)
-// const name = place.name.toLowerCase().replaceAll(" ", "-")
-
-        page.style.backgroundImage = `url('./where-do-we-go_images/${name}.jpg')`
-        
-        page.style.backgroundSize = "cover"
-        page.style.backgroundPosition = "center"
-    
-        page.style.backgroundRepeat = "no-repeat"
-            page.style.height = "100vh"
-        page.style.width = "100%"
-    document.body.appendChild(page)
-
-    }}
-
-function updateLocation() {
-    const screenMid = window.innerHeight / 2
-// const screenMid = window.innerHeight / 2 + window.scrollY
-    const index = Math.floor((window.scrollY + screenMid) / window.innerHeight)
-// console.log("index", index)
-    const place = places[index]
-
-  if (!place) return
-// console.log("place", place)
-
-    currentPlace.textContent = `${place.name}\n${place.coordinates}`
-    currentPlace.href = "https://www.google.com/maps/place/" + encodeCoords(place.coordinates)
-// currentPlace.href = "https://maps.google.com/?q=" + encodeCoords(place.coordinates)
-    
-currentPlace.target = "_blank"
-    currentPlace.style.color = place.color
+    const compass = document.createElement("div")
+    compass.classList.add("direction")
+    document.body.appendChild(compass)
+    // console.log("compass", compass)
 }
 
-function encodeCoords(coords) {
-// console.log("encoding", coords)
-return coords
-    .replaceAll(" ", "%20")
-    .replaceAll("°", "%C2%B0")
-    
-    .replaceAll('"', "%22")
-// .replaceAll("'", "%27")
+function createSection(place) {
+    let section = document.createElement("section")
+    // let section = document.createElement("div")
+
+    const name = place.name.toLowerCase().replaceAll(/ /g, "-").split(",")[0]
+    // const name = place.name.toLowerCase().replaceAll(" ", "-")
+    // console.log("image name", name)
+
+    section.style.background = `url('./where-do-we-go_images/${name}.jpg')`
+    // section.style.backgroundImage = `url('./where-do-we-go_images/${name}.jpg')`
+    section.style.backgroundSize = "cover"
+    section.style.backgroundPosition = "center"
+    section.style.backgroundRepeat = "no-repeat"
+    section.style.width = "100%"
+    section.style.height = "100vh"
+
+    document.body.appendChild(section)
+}
+
+function selectPlace() {
+    const sectionHeight = window.innerHeight
+    const scroll = window.scrollY + sectionHeight / 2
+    // const scroll = window.scrollY
+    const sectionIndex = Math.floor(scroll / sectionHeight)
+    // console.log("index", sectionIndex)
+
+    const place = places[sectionIndex]
+    if (!place) return
+    // console.log("place", place)
+
+    location.textContent = `${place.name}\n${place.coordinates}`
+    location.href = `https://www.google.com/maps/place/${urlEncodeCoordinates(place.coordinates)}/`
+    // location.href = `https://maps.google.com/?q=${urlEncodeCoordinates(place.coordinates)}`
+
+    console.log(
+        location.href
+            .split("%C2%B0").join("°")
+            .split("%22").join('"')
+            .split("%20").join(" ")
+    )
+
+    location.target = "_blank"
+    location.style.color = place.color
+}
+
+function urlEncodeCoordinates(coordinates) {
+    // console.log("encoding", coordinates)
+    return coordinates
+        .replaceAll(" ", "%20")
+        .replaceAll("°", "%C2%B0")
+        .replaceAll('"', "%22")
+        // .replaceAll("'", "%27")
 }
 
 function compareCoordinates(a, b) {
+    const aDirection = a.coordinates.split(" ")[0].split('"')[1]
+    const bDirection = b.coordinates.split(" ")[0].split('"')[1]
+    // console.log("directions", aDirection, bDirection)
 
+    const aLat = a.coordinates.split(" ")[0]
+    const bLat = b.coordinates.split(" ")[0]
 
-    const getLat = (p) => {
+    let aLatDeg = parseInt(aLat.split("°")[0])
+    let aLatMin = parseInt(aLat.split("°")[1].split("'")[0])
+    let aLatSec = parseInt(aLat.split("°")[1].split("'")[1].split('"')[0])
 
-    const lat = p.coordinates.split(" ")[0]
-// console.log("lat raw", lat)
-    const dir = lat.includes("S") ? -1 : 1
+    let bLatDeg = parseInt(bLat.split("°")[0])
+    let bLatMin = parseInt(bLat.split("°")[1].split("'")[0])
+    let bLatSec = parseInt(bLat.split("°")[1].split("'")[1].split('"')[0])
 
-    const deg = parseInt(lat.split("°")[0])
-    const min = parseInt(lat.split("°")[1])
-    const sec = parseInt(lat.split("°")[1].split("'")[1])
-// console.log(deg, min, sec)
-// const val = dir * (deg + min / 60 + sec / 3600)
-    
-    return dir * (deg * 10000 + min * 100 + sec)
+    // console.log("a", aLatDeg, aLatMin, aLatSec)
+    // console.log("b", bLatDeg, bLatMin, bLatSec)
+
+    if (aDirection === "S") {
+        aLatDeg = -aLatDeg
+        aLatMin = -aLatMin
+        aLatSec = -aLatSec
+    }
+    if (bDirection === "S") {
+        bLatDeg = -bLatDeg
+        bLatMin = -bLatMin
+        bLatSec = -bLatSec
+    }
+
+    if (aLatDeg > bLatDeg) return -1
+    if (aLatDeg < bLatDeg) return 1
+
+    // if (aLatDeg === bLatDeg) {
+    if (aLatMin > bLatMin) return -1
+    if (aLatMin < bLatMin) return 1
+
+        // if (aLatMin === bLatMin) {
+        if (aLatSec > bLatSec) return 1
+        if (aLatSec < bLatSec) return -1
+        // }
+    // }
+
+    return 0
 }
-    
 
-    return getLat(b) - getLat(a)
-}
-
-// function getDirection() {
-//     const goingUp = window.scrollY < lastScrollY
-//     document.querySelector(".direction").textContent = goingUp ? "N" : "S"
+// function getCompassDirection() {
+//     const dir = scroll > window.scrollY ? "N" : "S"
+//     document.querySelector(".direction").innerHTML = dir
 // }
 
-export { start as explore }
+export { explore }
