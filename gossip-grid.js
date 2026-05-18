@@ -4,20 +4,21 @@ import { gossips } from "./gossip-grid.data.js";
 function grid() {
 ranges()
 
-const form = document.createElement("form")
-  form.className = "gossip"
-  const input = document.createElement("textarea")
+let form = document.createElement("form");
+    form.classList.add("gossip");
+    
+let textarea = document.createElement("textarea");
 
-   const btn = document.createElement("button")
+let button = document.createElement("button");
+ button.innerHTML = "Share gossip!";
 
-   btn.textContent = "Share gossip!"
-       btn.type = "submit"
+ button.type = "submit";
 // btn.type = "button"
 
-btn.addEventListener("click", e => {
+button.addEventListener("click", e => {
     e.preventDefault()
 
-        const text = input.value
+        const text = textarea.value
 // console.log("text", text)
 // console.log("gossips before", gossips)
 if (text && text.trim().length > 0) {
@@ -27,32 +28,34 @@ document.querySelectorAll(".gossip").forEach((el, i) => {
     if (i !== 0) el.remove()
 })
 
-input.value = ""
-// input.value = null
+textarea.value = ""
+// textarea.value = null
 
 renderGossips()
 // console.log("gossips after", gossips)
 }
-// else { console.log("empty input") }
+// else { console.log("empty textarea") }
 
 })
-form.appendChild(input)
 
-form.appendChild(btn)
+form.appendChild(textarea)
+
+form.appendChild(button)
 document.body.appendChild(form)
 
 renderGossips()
 }
 
-    function renderGossips() {
+
+function renderGossips() {
 // console.log("rendering", gossips.length, "gossips")
 
-for (const item of gossips) {
+    for (const item of gossips) {
 
-    const card = document.createElement("div")
-    card.className = "gossip"
+    let card = document.createElement("div")
+    card.classList.add("gossip")
 // card.textContent = item
-card.textContent = item
+card.innerHTML = item
 document.body.appendChild(card)
 }}
 
