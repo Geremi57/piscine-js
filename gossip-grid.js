@@ -5,12 +5,12 @@ function grid() {
 ranges()
 
 let form = document.createElement("form");
-    form.classList.add("gossip");
+    // form.classList.add("gossip");r
     
 let textarea = document.createElement("textarea");
 
 let button = document.createElement("button");
- button.innerHTML = "Share gossip!";
+ button.textContent = "Share gossip!";
 
  button.type = "submit";
 // btn.type = "button"
