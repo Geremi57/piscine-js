@@ -12,9 +12,11 @@ const invert = function(obj){
             empObj[key] = val;
         })
     })
-    console.log(empObj)
-    console.log(creObj)
+    // console.log(empObj)
+    // console.log(creObj)
 
+    return creObj
 }
 
 console.log(invert({ x: 'a', y: 'b', z: 'c' }))
+console.log(invert({ language: 'english' }))
