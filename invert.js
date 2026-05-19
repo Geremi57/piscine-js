@@ -5,7 +5,7 @@ const invert = function(obj){
     console.log(keys)
     console.log(val)
 
-    let creObj = Object.fromEntries(keys.map ((key, index) => [key, val[index]]))
+    let creObj = Object.fromEntries(val.map ((value, index) => [value, keys[index]]))
 
     keys.forEach(key => {
         val.forEach(val => {
