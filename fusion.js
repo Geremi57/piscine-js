@@ -7,7 +7,7 @@ const fusion = (obj1, obj2) => {
     const val2 = obj2[key]
 
     if(Array.isArray(val1) && Array.isArray(val2)) {
-      result[key] = [...new Set([...val1, ...val2])]
+      result[key] = [...([...val1, ...val2])]
     }
 
     else if(typeof val1 === 'object' && val1 !== null && typeof val2 === 'object' && val2 !== null && !Array.isArray(val1)){
@@ -30,3 +30,7 @@ const fusion = (obj1, obj2) => {
   return result;
 };
 
+console.log(fusion(
+      { a: { b: [1, 2], c: { d: 2 } } },
+      { a: { b: [0, 2, 1], c: { d: 23 } } },
+    ))
