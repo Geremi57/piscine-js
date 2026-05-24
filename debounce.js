@@ -19,7 +19,7 @@ const opDebounce = function (func, wait = 0, options = {}) {
     const leader = options.leading || false
     let invoked = false
 
-    return function(params){
+    return function(...params){
         prev = params
         prevScope = this
 
