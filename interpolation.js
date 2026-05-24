@@ -28,13 +28,13 @@ const { step, start, end, callback, duration, waitTime = 15 } = obj;
     //hits = hits + 1
 }
 // interpolation()
-interpolation({
-  step: 5,
-  start: 0,
-  end: 1,
-  duration: 10,
-  callback: (point) => console.log(point),
-});
+// interpolation({
+//   step: 5,
+//   start: 0,
+//   end: 1,
+//   duration: 10,
+//   callback: (point) => console.log(point),
+// });
 
 
 
